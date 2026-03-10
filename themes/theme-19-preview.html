@@ -3,103 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodiBlog - Food Blog & Recipe Sharing</title>
+    <title>TechWrite - Developer Community & Tutorials</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', serif; background: #fafafa; }
-        header { background: white; padding: 1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        body { font-family: 'Fira Code', 'Courier New', monospace; background: #1a1a2e; color: #e0e0e0; }
+        header { background: rgba(26, 26, 46, 0.95); padding: 1.2rem 2rem; box-shadow: 0 2px 15px rgba(0, 212, 255, 0.1); border-bottom: 2px solid #00d4ff; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.7rem; font-weight: 700; color: #d35400; }
-        nav { display: flex; gap: 2.5rem; }
-        nav a { color: #666; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: #d35400; }
-        .hero { background: linear-gradient(135deg, #f39c12, #d35400); color: white; padding: 6rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3.8rem; font-weight: 700; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; }
+        .logo { font-size: 1.6rem; font-weight: 900; color: #00d4ff; text-shadow: 0 0 15px rgba(0, 212, 255, 0.5); }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: #90a0d0; text-decoration: none; font-weight: 500; transition: all 0.3s; font-size: 0.9rem; }
+        nav a:hover { color: #00d4ff; text-shadow: 0 0 8px rgba(0, 212, 255, 0.5); }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 6rem 2rem; text-align: center; border-bottom: 3px solid #00d4ff; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem; color: #00d4ff; text-shadow: 0 0 20px rgba(0, 212, 255, 0.6); }
+        .hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #90a0d0; }
         .container-main { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
         .blog-header { margin-bottom: 3rem; }
-        .blog-header h2 { font-size: 2.5rem; color: #333; margin-bottom: 1rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem; margin: 3rem 0; }
-        .blog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
-        .blog-img { background: linear-gradient(135deg, #f39c12, #e67e22); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .blog-header h2 { font-size: 2.5rem; color: #00d4ff; margin-bottom: 1rem; text-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem; margin: 3rem 0; }
+        .blog-card { background: rgba(0, 212, 255, 0.05); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1); transition: all 0.3s; border: 2px solid #00d4ff; }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(0, 212, 255, 0.25); border-color: #00ffff; }
+        .blog-img { background: linear-gradient(135deg, #00d4ff, #0099cc); height: 200px; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
         .blog-content { padding: 1.8rem; }
-        .blog-date { color: #d35400; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
-        .blog-title { color: #333; font-size: 1.3rem; font-weight: 700; margin: 0.5rem 0; }
-        .blog-excerpt { color: #666; font-size: 0.95rem; line-height: 1.6; margin: 1rem 0; }
-        .blog-author { color: #999; font-size: 0.85rem; }
-        .read-more { color: #d35400; text-decoration: none; font-weight: 600; }
-        .read-more:hover { text-decoration: underline; }
-        .sidebar { background: white; padding: 2rem; border-radius: 12px; margin-top: 2rem; }
-        .sidebar h3 { color: #333; margin-bottom: 1.5rem; }
+        .blog-date { color: #00d4ff; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .blog-title { color: #00ffff; font-size: 1.3rem; font-weight: 800; margin: 0.8rem 0; }
+        .blog-excerpt { color: #90a0d0; font-size: 0.95rem; line-height: 1.7; margin: 1rem 0; }
+        .blog-meta { color: #555599; font-size: 0.85rem; }
+        .read-more { color: #00d4ff; text-decoration: none; font-weight: 700; }
+        .read-more:hover { text-shadow: 0 0 10px rgba(0, 212, 255, 0.6); }
+        .sidebar { background: rgba(0, 212, 255, 0.1); padding: 2rem; border-radius: 12px; margin-top: 2rem; border: 2px solid #00d4ff; }
+        .sidebar h3 { color: #00ffff; margin-bottom: 1.5rem; font-size: 1.3rem; }
         .sidebar ul { list-style: none; }
-        .sidebar li { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
-        .sidebar a { color: #d35400; text-decoration: none; }
-        footer { background: #333; color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
+        .sidebar li { margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(0, 212, 255, 0.3); }
+        .sidebar a { color: #00d4ff; text-decoration: none; font-weight: 600; }
+        .sidebar a:hover { text-shadow: 0 0 8px rgba(0, 212, 255, 0.5); }
+        .tag { display: inline-block; background: rgba(0, 212, 255, 0.2); color: #00d4ff; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; margin-top: 8px; border: 1px solid #00d4ff; }
+        footer { background: linear-gradient(135deg, #1a1a2e, #0f3460); color: white; padding: 2rem; text-align: center; margin-top: 4rem; border-top: 2px solid #00d4ff; }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="logo"><i class="fas fa-utensils"></i> FoodiBlog</div>
+            <div class="logo\"><i class="fas fa-code\"></i> TechWrite</div>
             <nav>
-                <a href="#">Recipes</a>
-                <a href="#">Categories</a>
-                <a href="#">About</a>
+                <a href="#">Tutorials</a>
+                <a href="#">Languages</a>
+                <a href="#">Frameworks</a>
+                <a href="#">Community</a>
                 <a href="#">Contact</a>
             </nav>
         </div>
     </header>
     <div class="hero">
-        <h1>Delicious Recipes & Food Stories</h1>
-        <p>Explore culinary inspiration and learn to cook like a pro</p>
+        <h1>> learn.code.build;</h1>
+        <p>Master modern programming with comprehensive tutorials, code samples, and best practices</p>
     </div>
     <div class="container-main">
         <div class="blog-header">
-            <h2>Latest Articles</h2>
+            <h2><i class="fas fa-book\"></i> Latest Tutorials</h2>
         </div>
         <div class="blog-grid">
             <div class="blog-card">
-                <div class="blog-img">🍝</div>
-                <div class="blog-content">
-                    <div class="blog-date">March 5, 2024</div>
-                    <div class="blog-title">Homemade Pasta Guide</div>
-                    <div class="blog-excerpt">Learn traditional Italian pasta-making techniques in this comprehensive guide for beginners.</div>
-                    <a href="#" class="read-more">Read More →</a>
+                <div class="blog-img\">📱</div>
+                <div class="blog-content\">
+                    <div class="blog-date\">March 12, 2026</div>
+                    <div class="blog-title\">React Hooks Deep Dive</div>
+                    <div class="blog-excerpt\">Learn advanced React Hook patterns, custom hooks, and performance optimization techniques for production apps.</div>
+                    <div class="tag\">React</div><div class="tag\">JavaScript</div>
+                    <a href="#" class="read-more\">Read →</a>
                 </div>
             </div>
             <div class="blog-card">
-                <div class="blog-img">🍰</div>
-                <div class="blog-content">
-                    <div class="blog-date">March 2, 2024</div>
-                    <div class="blog-title">Chocolate Cake Secrets</div>
-                    <div class="blog-excerpt">Discover the secrets to making the perfect chocolate cake that's moist and delicious.</div>
-                    <a href="#" class="read-more">Read More →</a>
+                <div class="blog-img\">🔧</div>
+                <div class="blog-content\">
+                    <div class="blog-date\">March 10, 2026</div>
+                    <div class="blog-title\">Docker Containerization</div>
+                    <div class="blog-excerpt\">Complete guide to containerizing your applications with Docker, including best practices and deployment strategies.</div>
+                    <div class="tag\">DevOps</div><div class="tag\">Docker</div>
+                    <a href="#" class="read-more\">Read →</a>
                 </div>
             </div>
             <div class="blog-card">
-                <div class="blog-img">🥗</div>
-                <div class="blog-content">
-                    <div class="blog-date">February 28, 2024</div>
-                    <div class="blog-title">Healthy Salad Recipes</div>
-                    <div class="blog-excerpt">Create nutritious and tasty salads that will keep you satisfied throughout the day.</div>
-                    <a href="#" class="read-more">Read More →</a>
+                <div class="blog-img\">⚡</div>
+                <div class="blog-content\">
+                    <div class="blog-date\">March 8, 2026</div>
+                    <div class="blog-title\">Node.js Performance Tips</div>
+                    <div class="blog-excerpt\">Optimize your Node.js applications with profiling tools, memory management, and async patterns.</div>
+                    <div class="tag\">Node.js</div><div class="tag\">Performance</div>
+                    <a href="#" class="read-more\">Read →</a>
                 </div>
             </div>
         </div>
         <div class="sidebar">
-            <h3>Popular Recipes</h3>
+            <h3><i class="fas fa-tags\"></i> Popular Topics</h3>
             <ul>
-                <li><a href="#">Classic Beef Stroganoff</a></li>
-                <li><a href="#">Fresh Fruit Smoothie Bowls</a></li>
-                <li><a href="#">Thai Green Curry</a></li>
-                <li><a href="#">Lemon Blueberry Cheesecake</a></li>
-                <li><a href="#">Asian Stir Fry Master Class</a></li>
+                <li><a href="#">TypeScript Advanced Types</a></li>
+                <li><a href="#">REST API Design Patterns</a></li>
+                <li><a href="#">GraphQL with Node.js</a></li>
+                <li><a href="#">Database Optimization</a></li>
+                <li><a href="#">Microservices Architecture</a></li>
+                <li><a href="#">Testing & TDD Practices</a></li>
             </ul>
         </div>
     </div>
-    <footer><p>&copy; 2024 FoodiBlog. Cooking Made Delicious.</p></footer>
+    <footer><p>&copy; 2026 TechWrite. Learn. Code. Build. Master the craft of programming.</p></footer>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corona Admin - Medical Dashboard</title>
+    <title>TaskPro - Project Management Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%); 
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); 
             min-height: 100vh;
             padding-bottom: 60px;
         }
@@ -46,26 +46,26 @@
             border-left: 5px solid #2196f3;
         }
         .intro-box h2 {
-            color: #2196f3;
+            color: #27ae60;
             margin-bottom: 15px;
             font-weight: 700;
         }
         h2 {
-            color: #2196f3;
+            color: #27ae60;
             font-weight: 700;
             margin: 40px 0 25px;
             font-size: 2rem;
         }
-        .medical-interface {
+        .dashboard-interface {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             margin: 30px 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            border: 2px solid #e3f2fd;
+            border: 2px solid #ecfdf5;
         }
         .interface-header {
-            background: linear-gradient(90deg, #2196f3, #1976d2);
+            background: linear-gradient(90deg, #27ae60, #1e8449);
             color: white;
             padding: 25px 30px;
             display: flex;
@@ -83,22 +83,22 @@
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
         }
-        .medical-card {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        .metric-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d4f1e4 100%);
             padding: 25px;
             border-radius: 12px;
-            border: 2px solid #90caf9;
+            border: 2px solid #27ae60;
             text-align: center;
             transition: all 0.3s ease;
         }
-        .medical-card:hover {
+        .metric-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(33,150,243,0.3);
-            border-color: #2196f3;
+            box-shadow: 0 8px 25px rgba(39,174,96,0.3);
+            border-color: #1e8449;
         }
         .metric-icon {
             font-size: 2.5rem;
-            color: #2196f3;
+            color: #27ae60;
             margin-bottom: 12px;
         }
         .metric-label {
@@ -108,8 +108,8 @@
             letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
-        .metric-value {
-            color: #1565c0;
+        .metric-number {
+            color: #1a1a1a;
             font-size: 1.8rem;
             font-weight: 700;
         }
@@ -127,13 +127,13 @@
             transition: all 0.3s ease;
         }
         .feature-box:hover {
-            border-color: #2196f3;
-            box-shadow: 0 10px 35px rgba(33,150,243,0.15);
+            border-color: #27ae60;
+            box-shadow: 0 10px 35px rgba(39,174,96,0.15);
             transform: translateY(-5px);
         }
         .feature-box i {
             font-size: 2.5rem;
-            color: #2196f3;
+            color: #27ae60;
             margin-bottom: 15px;
         }
         .feature-box h3 {
@@ -146,19 +146,19 @@
             line-height: 1.7;
             margin: 0;
         }
-        .patient-records {
+        .task-list {
             background: #f5f9fc;
             border-radius: 12px;
             padding: 25px;
             margin: 30px 0;
-            border: 2px solid #e3f2fd;
+            border: 2px solid #ecfdf5;
         }
-        .patient-records h3 {
-            color: #2196f3;
+        .task-list h3 {
+            color: #27ae60;
             margin-bottom: 20px;
             font-weight: 700;
         }
-        .record-item {
+        .task-item {
             background: white;
             padding: 18px;
             border-radius: 8px;
@@ -166,7 +166,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-left: 4px solid #2196f3;
+            border-left: 4px solid #27ae60;
         }
         .record-info h4 {
             color: #333;
@@ -179,9 +179,9 @@
             font-size: 0.85rem;
             margin: 0;
         }
-        .record-status {
-            background: #e3f2fd;
-            color: #2196f3;
+        .status-badge {
+            background: #ecfdf5;
+            color: #27ae60;
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -210,16 +210,16 @@
             font-size: 1rem;
         }
         .btn-primary-custom {
-            background: linear-gradient(135deg, #2196f3, #1976d2);
+            background: linear-gradient(135deg, #27ae60, #1e8449);
             color: white;
         }
         .btn-primary-custom:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(33,150,243,0.4);
+            box-shadow: 0 10px 30px rgba(39,174,96,0.4);
             color: white;
         }
         footer {
-            background: linear-gradient(135deg, #2196f3, #1565c0);
+            background: linear-gradient(135deg, #27ae60, #1e8449);
             color: white;
             padding: 30px 0;
             text-align: center;
@@ -229,42 +229,42 @@
 </head>
 <body>
     <div class="header">
-        <h1><i class="fas fa-hospital"></i> Corona Admin</h1>
-        <p>Comprehensive Medical Dashboard & Patient Management System</p>
+        <h1><i class="fas fa-tasks"></i> TaskPro</h1>
+        <p>Intelligent Project Management & Team Productivity Platform</p>
     </div>
 
     <div class="main-content">
         <div class="intro-box">
-            <h2>Corona Admin System</h2>
-            <p>A specialized healthcare administration dashboard designed for medical professionals and hospital management. Track patient metrics, manage appointments, monitor vital statistics, and streamline medical records with an intuitive interface built for healthcare environments.</p>
+            <h2>TaskPro Dashboard System</h2>
+            <p>Streamline project workflows, track team progress in real-time, and deliver projects on schedule. TaskPro consolidates all your team's work into one intelligent platform with automated task tracking, milestone management, and performance analytics.</p>
         </div>
 
-        <h2>Patient Dashboard</h2>
-        <div class="medical-interface">
+        <h2>Team Performance Metrics</h2>
+        <div class="dashboard-interface">
             <div class="interface-header">
-                <h4>Current Patient Metrics</h4>
+                <h4>Current Project Dashboard</h4>
                 <span style="color: #e0e0e0;">Updated 2 minutes ago</span>
             </div>
             <div class="interface-body">
-                <div class="medical-card">
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-tasks"></i></div>
+                    <div class="metric-label">Active Tasks</div>
+                    <div class="metric-number">847</div>
+                </div>
+                <div class="metric-card">
                     <div class="metric-icon"><i class="fas fa-users"></i></div>
-                    <div class="metric-label">Total Patients</div>
-                    <div class="metric-value">2,847</div>
+                    <div class="metric-label">Team Members</div>
+                    <div class="metric-number">34</div>
                 </div>
-                <div class="medical-card">
-                    <div class="metric-icon"><i class="fas fa-bed"></i></div>
-                    <div class="metric-label">Admitted</div>
-                    <div class="metric-value">384</div>
-                </div>
-                <div class="medical-card">
-                    <div class="metric-icon"><i class="fas fa-heartbeat"></i></div>
-                    <div class="metric-label">Critical Cases</div>
-                    <div class="metric-value">24</div>
-                </div>
-                <div class="medical-card">
+                <div class="metric-card">
                     <div class="metric-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="metric-label">Recovered</div>
-                    <div class="metric-value">2,412</div>
+                    <div class="metric-label">Completed</div>
+                    <div class="metric-number">2,156</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon"><i class="fas fa-bar-chart"></i></div>
+                    <div class="metric-label">On-Time Delivery</div>
+                    <div class="metric-number">94%</div>
                 </div>
             </div>
         </div>
@@ -272,71 +272,71 @@
         <h2>Key Features</h2>
         <div class="features-grid">
             <div class="feature-box">
-                <i class="fas fa-file-medical"></i>
-                <h3>Patient Records</h3>
-                <p>Comprehensive digital patient files with medical history, prescriptions, and treatment notes.</p>
+                <i class="fas fa-project-diagram"></i>
+                <h3>Project Management</h3>
+                <p>Organize projects hierarchically with custom workflows, timelines, and dependencies. Track progress visually with Gantt charts and Kanban boards.</p>
             </div>
             <div class="feature-box">
-                <i class="fas fa-calendar-check"></i>
-                <h3>Appointment Management</h3>
-                <p>Schedule, reschedule, and manage patient appointments with automated reminders.</p>
+                <i class="fas fa-comments"></i>
+                <h3>Team Collaboration</h3>
+                <p>Built-in messaging, comments, and notifications keep teams synchronized. Share documents, attachments, and updates instantly.</p>
             </div>
             <div class="feature-box">
-                <i class="fas fa-pills"></i>
-                <h3>Medication Tracking</h3>
-                <p>Monitor medication inventory, dispensing records, and patient medication history.</p>
+                <i class="fas fa-clock"></i>
+                <h3>Time Tracking</h3>
+                <p>Automatic time logging for tasks with detailed reports. Monitor productivity and billable hours with precision.</p>
             </div>
             <div class="feature-box">
                 <i class="fas fa-chart-line"></i>
-                <h3>Health Analytics</h3>
-                <p>Advanced reporting and analytics for hospital performance and patient outcomes.</p>
+                <h3>Analytics & Reports</h3>
+                <p>Real-time dashboards with customizable metrics. Export detailed reports on performance, resource utilization, and ROI.</p>
             </div>
             <div class="feature-box">
                 <i class="fas fa-lock"></i>
-                <h3>HIPAA Compliant</h3>
-                <p>Enterprise-grade security ensuring patient data privacy and regulatory compliance.</p>
+                <h3>Security & Permissions</h3>
+                <p>Role-based access control with granular permissions. Enterprise-grade encryption and compliance standards.</p>
             </div>
             <div class="feature-box">
-                <i class="fas fa-headset"></i>
-                <h3>Medical Support</h3>
-                <p>24/7 specialized support team trained in healthcare IT and system administration.</p>
+                <i class="fas fa-plug"></i>
+                <h3>Integrations</h3>
+                <p>Connect with Slack, GitHub, Jira, and 100+ tools. Automate workflows and sync data across platforms seamlessly.</p>
             </div>
         </div>
 
-        <div class="patient-records">
-            <h3>Recent Patient Check-ins</h3>
-            <div class="record-item">
+        <div class="task-list">
+            <h3>Workflow Checklist</h3>
+            <div class="task-item">
                 <div class="record-info">
-                    <h4>John Martinez</h4>
-                    <p>Appointment: Cardiology - Dr. Sarah Johnson</p>
+                    <h4>✓ Define project scope and milestones</h4>
+                    <p>Establish clear goals with stakeholder input</p>
                 </div>
-                <div class="record-status">Completed</div>
+                <div class="status-badge">Essential</div>
             </div>
-            <div class="record-item">
+            <div class="task-item">
                 <div class="record-info">
-                    <h4>Emily Davis</h4>
-                    <p>Appointment: General Checkup - Dr. Michael Chen</p>
+                    <h4>✓ Create task hierarchy and assign team</h4>
+                    <p>Organize work by skill and availability</p>
                 </div>
-                <div class="record-status">Pending</div>
+                <div class="status-badge">Essential</div>
             </div>
-            <div class="record-item">
+            <div class="task-item">
                 <div class="record-info">
-                    <h4>Robert Thompson</h4>
-                    <p>Lab Work: Complete Blood Count Ordered</p>
+                    <h4>✓ Set deadlines and track progress</h4>
+                    <p>Monitor with automated notifications</p>
                 </div>
-                <div class="record-status">Processing</div>
+                <div class="status-badge">Essential</div>
             </div>
         </div>
 
         <div class="cta-section">
-            <h3>Ready to Transform Your Healthcare Management?</h3>
-            <p style="margin-bottom: 20px; color: #555;">Implement Corona Admin for your medical institution</p>
-            <button class="btn-custom btn-primary-custom">Schedule Demo</button>
+            <h3>Ready to Master Your Projects?</h3>
+            <p style="margin-bottom: 20px; color: #555;">Deploy TaskPro for your team and watch productivity soar</p>
+            <button class="btn-custom btn-primary-custom">Start Free Trial</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Corona Admin. Trusted by Healthcare Professionals Worldwide.</p>
+        <p>&copy; 2026 TaskPro. Intelligent Project Management. Deliver Excellence.</p>
     </footer>
 </body>
 </html>

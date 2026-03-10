@@ -3,77 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appco - B2B Software & Service Showcase</title>
+    <title>CloudSync - Cloud Infrastructure Platform</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; }
-        header { background: white; padding: 1rem 2rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f23; color: #fff; }
+        header { background: rgba(15, 15, 35, 0.95); padding: 1rem 2rem; box-shadow: 0 2px 15px rgba(142, 68, 173, 0.2); border-bottom: 2px solid #8e44ad; }
         .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: #2980b9; }
-        nav { display: flex; gap: 2rem; }
-        nav a { text-decoration: none; color: #666; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: #2980b9; }
-        .hero { background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 5rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .logo { font-size: 1.7rem; font-weight: 800; color: #8e44ad; text-shadow: 0 0 20px rgba(142, 68, 173, 0.5); }
+        nav { display: flex; gap: 2.5rem; }
+        nav a { text-decoration: none; color: #b0b0c0; font-weight: 500; transition: all 0.3s; }
+        nav a:hover { color: #8e44ad; text-shadow: 0 0 10px rgba(142, 68, 173, 0.6); }
+        .hero { background: linear-gradient(135deg, #8e44ad 0%, #6c3483 100%); color: white; padding: 5.5rem 2rem; text-align: center; border-bottom: 2px solid #8e44ad; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero button { padding: 14px 40px; background: #00d4ff; color: #0f0f23; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+        .hero button:hover { box-shadow: 0 0 30px rgba(0, 212, 255, 0.6); transform: scale(1.05); }
         .container-main { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
         .section { margin: 4rem 0; }
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: #333; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: #8e44ad; text-shadow: 0 0 20px rgba(142, 68, 173, 0.3); }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .service-box { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 3px 12px rgba(0,0,0,0.08); border-left: 4px solid #3498db; transition: all 0.3s; }
-        .service-box:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
-        .service-icon { font-size: 2.5rem; color: #3498db; margin-bottom: 1rem; }
-        .service-box h3 { color: #333; margin-bottom: 0.8rem; font-weight: 700; }
-        .service-box p { color: #666; font-size: 0.95rem; line-height: 1.6; }
-        .benefits-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin: 3rem 0; }
-        .benefits-text h3 { color: #333; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 700; }
-        .benefit-item { margin-bottom: 1.5rem; padding-left: 40px; position: relative; }
-        .benefit-item:before { content: '✓'; position: absolute; left: 0; font-weight: 700; color: #3498db; font-size: 1.3rem; }
-        .benefits-visual { background: linear-gradient(135deg, #ecf0f1, #bdc3c7); padding: 2rem; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
-        footer { background: #333; color: white; padding: 3rem; text-align: center; }
+        .service-box { background: rgba(142, 68, 173, 0.1); border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(142, 68, 173, 0.15); border: 2px solid #8e44ad; transition: all 0.3s; }
+        .service-box:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(142, 68, 173, 0.3); border-color: #00d4ff; }
+        .service-icon { font-size: 2.8rem; color: #00d4ff; margin-bottom: 1.5rem; }
+        .service-box h3 { color: #8e44ad; margin-bottom: 1rem; font-weight: 700; font-size: 1.3rem; }
+        .service-box p { color: #b0b0c0; font-size: 0.95rem; line-height: 1.7; }
+        .benefits-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin: 4rem 0; }
+        .benefits-text h3 { color: #8e44ad; font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
+        .benefit-item { margin-bottom: 1.5rem; padding-left: 40px; position: relative; color: #b0b0c0; font-size: 1rem; }
+        .benefit-item:before { content: '✦'; position: absolute; left: 0; font-weight: 700; color: #00d4ff; font-size: 1.5rem; }
+        .benefits-visual { background: linear-gradient(135deg, rgba(8,212,255,0.1), rgba(142, 68, 173, 0.1)); border: 2px solid #8e44ad; padding: 2rem; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+        footer { background: linear-gradient(135deg, #8e44ad, #2c1540); color: white; padding: 3rem; text-align: center; border-top: 2px solid #8e44ad; }
     </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <div class="logo"><i class="fas fa-cube"></i> Appco</div>
+            <div class="logo"><i class="fas fa-cloud"></i> CloudSync</div>
             <nav>
+                <a href="#">Infrastructure</a>
                 <a href="#">Services</a>
-                <a href="#">Solutions</a>
                 <a href="#">Pricing</a>
-                <a href="#">Enterprise</a>
+                <a href="#">Docs</a>
                 <a href="#">Contact</a>
             </nav>
         </div>
     </header>
     <div class="hero">
-        <h1>Enterprise Software Solutions</h1>
-        <p>Streamline your business operations with intelligent, scalable software platforms</p>
-        <button style="padding: 14px 40px; background: white; color: #3498db; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem;">Request Demo</button>
+        <h1>Enterprise Cloud Infrastructure</h1>
+        <p>Deploy, manage, and scale cloud resources with intelligent automation and zero downtime</p>
+        <button>Start Building</button>
     </div>
     <div class="container-main">
         <div class="section">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title">Cloud Solutions</h2>
             <div class="services-grid">
-                <div class="service-box"><div class="service-icon"><i class="fas fa-cogs"></i></div><h3>Custom Development</h3><p>Tailored software built for your specific needs</p></div>
-                <div class="service-box"><div class="service-icon"><i class="fas fa-cloud"></i></div><h3>Cloud Solutions</h3><p>Scalable, secure, and always available</p></div>
-                <div class="service-box"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><h3>Security & Compliance</h3><p>Enterprise-grade protection and standards</p></div>
-                <div class="service-box"><div class="service-icon"><i class="fas fa-headset"></i></div><h3>24/7 Support</h3><p>Dedicated support whenever you need it</p></div>
+                <div class="service-box"><div class="service-icon"><i class="fas fa-cube"></i></div><h3>Kubernetes Orchestration</h3><p>Automated container deployment, scaling, and management for enterprise workloads</p></div>
+                <div class="service-box"><div class="service-icon"><i class="fas fa-network-wired"></i></div><h3>Network Infrastructure</h3><p>High-performance networking with DDoS protection and global load balancing</p></div>
+                <div class="service-box"><div class="service-icon"><i class="fas fa-database"></i></div><h3>Data Storage</h3><p>Multi-region replication, backup automation, and compliance-ready storage</p></div>
+                <div class="service-box"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><h3>Security & Compliance</h3><p>End-to-end encryption, IAM controls, and regulatory compliance frameworks</p></div>
             </div>
         </div>
         <div class="benefits-row">
             <div class="benefits-text">
-                <h3>Why Choose Appco?</h3>
-                <div class="benefit-item">Industry-leading performance and reliability</div>
-                <div class="benefit-item">Seamless integration with existing systems</div>
-                <div class="benefit-item">Expert team with 20+ years experience</div>
-                <div class="benefit-item">Proven ROI for hundreds of enterprises</div>
+                <h3>Why CloudSync?</h3>
+                <div class="benefit-item">99.99% uptime SLA with redundancy across regions</div>
+                <div class="benefit-item">Auto-scaling infrastructure that adapts to demand</div>
+                <div class="benefit-item">One-click disaster recovery and backup management</div>
+                <div class="benefit-item">Real-time monitoring and predictive alerts</div>
             </div>
-            <div class="benefits-visual">📊</div>
+            <div class="benefits-visual">☁️</div>
         </div>
     </div>
-    <footer><p>&copy; 2024 Appco. Empower Your Enterprise.</p></footer>
+    <footer><p>&copy; 2026 CloudSync. Enterprise Cloud Infrastructure. Built for Scale.</p></footer>
 </body>
 </html>
