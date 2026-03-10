@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karma - Marketplace & Vendor Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fb; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .logo i {
+            color: #3498db;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Video Container */
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .hero-video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-overlay h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero-overlay p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: white;
+            color: #3498db;
+            padding: 14px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: #3498db;
+        }
+
+        /* Main Container */
+        .container-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Vendor Stats */
+        .vendor-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-top: 5px solid #3498db;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+        }
+
+        .stat-icon {
+            font-size: 2.2rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.3rem;
+            color: #2c3e50;
+            font-weight: 800;
+            margin: 3rem 0 2.5rem;
+            text-align: center;
+        }
+
+        /* Vendors Grid */
+        .vendors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .vendor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .vendor-card:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+        }
+
+        .vendor-banner {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .vendor-info {
+            padding: 1.8rem;
+        }
+
+        .vendor-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .vendor-desc {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .vendor-rating {
+            color: #f39c12;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .vendor-btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .vendor-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-top: 4px solid #3498db;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-video-container" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <div class="hero-overlay">
+            <h1>Karma</h1>
+            <p>Marketplace & Vendor Platform</p>
+            <a href="#" style="display: inline-block; background: white; color: #3498db; padding: 12px 35px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-right: 10px;">Become a Seller</a>
+            <a href="#" style="display: inline-block; background: transparent; border: 2px solid white; color: white; padding: 12px 35px; border-radius: 8px; text-decoration: none; font-weight: 700;">Browse Products</a>
+        </div>
+    </div>
+    <header>
+        <div class="header-content">
+            <div class="logo"><i class="fas fa-handshake"></i>Karma</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Become a Seller</a></li>
+                    <li><a href="#">Browse Vendors</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Karma Marketplace</h1>
+        <p>Connect with thousands of vendors and buyers. Grow your business through our trusted marketplace platform.</p>
+        <button class="hero-btn">Join as Seller</button>
+        <button class="hero-btn" style="background: transparent; border: 2px solid white; color: white;">Browse Products</button>
+    </div>
+
+    <div class="container-main">
+        <h2 class="section-title">Platform Statistics</h2>
+        <div class="vendor-stats">
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-store"></i></div>
+                <div class="stat-number">12.5K+</div>
+                <div class="stat-label">Active Vendors</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                <div class="stat-number">2.3M+</div>
+                <div class="stat-label">Products Listed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">8.7M+</div>
+                <div class="stat-label">Active Buyers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-number">$450M+</div>
+                <div class="stat-label">GMV Annual</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Featured Vendors</h2>
+        <div class="vendors-grid">
+            <div class="vendor-card">
+                <div class="vendor-banner">🏪</div>
+                <div class="vendor-info">
+                    <div class="vendor-name">StyleHub</div>
+                    <div class="vendor-desc">Premium fashion and accessories</div>
+                    <div class="vendor-rating">★★★★★ 4.8/5 (2,340 reviews)</div>
+                    <button class="vendor-btn">View Store</button>
+                </div>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-banner">⚙️</div>
+                <div class="vendor-info">
+                    <div class="vendor-name">TechGear</div>
+                    <div class="vendor-desc">Electronics and gadgets</div>
+                    <div class="vendor-rating">★★★★★ 4.7/5 (1,890 reviews)</div>
+                    <button class="vendor-btn">View Store</button>
+                </div>
+            </div>
+            <div class="vendor-card">
+                <div class="vendor-banner">🏠</div>
+                <div class="vendor-info">
+                    <div class="vendor-name">HomeComfort</div>
+                    <div class="vendor-desc">Home & living products</div>
+                    <div class="vendor-rating">★★★★★ 4.6/5 (1,560 reviews)</div>
+                    <button class="vendor-btn">View Store</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Why Choose Karma?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Buyer Protection</h3>
+                <p>100% protection on every purchase with secure escrow system</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Growth Tools</h3>
+                <p>Advanced analytics and marketing tools for seller success</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                <h3>Logistics Support</h3>
+                <p>Integrated shipping and fulfillment services</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Expert support for buyers and sellers anytime</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-percent"></i></div>
+                <h3>Competitive Fees</h3>
+                <p>Low commission rates with no hidden charges</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <h3>Global Reach</h3>
+                <p>Connect with customers worldwide seamlessly</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Karma Marketplace. Connecting Vendors & Buyers Worldwide.</p>
+    </footer>
+</body>
+</html>

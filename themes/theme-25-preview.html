@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Living - Lifestyle & Wellness Brand</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: white; }
+        .top-bar { background: #f8f8f8; padding: 0.8rem 2rem; font-size: 0.85rem; color: #666; border-bottom: 1px solid #e5e7eb; }
+        .nav-minimal { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e5e7eb; }
+        .brand-name { font-size: 1.3rem; font-weight: 800; color: #7c3aed; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: #7c3aed; }
+        .hero-video { width: 100%; height: 500px; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; overflow: hidden; }
+        .hero-video::before { content: ''; position: absolute; inset: 0; background: rgba(124, 58, 237, 0.3); }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-video h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero-video p { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 2rem; }
+        .hero-video button { padding: 12px 40px; background: white; color: #7c3aed; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+        .grid-showcase { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; overflow: hidden; margin: 3rem 0; }
+        .showcase-item { height: 300px; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem; }
+        .showcase-item:nth-child(2) { background: linear-gradient(135deg, #a78bfa, #c4b5fd); }
+        .showcase-item:nth-child(3) { background: linear-gradient(135deg, #c4b5fd, #7c3aed); }
+        .showcase-item:nth-child(4) { background: linear-gradient(135deg, #ec4899, #f472b6); }
+        .showcase-text h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .showcase-text p { opacity: 0.95; }
+        .centered-section { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; text-align: center; }
+        .centered-section h2 { font-size: 2rem; color: #333; margin-bottom: 1.5rem; font-weight: 700; }
+        .centered-section p { color: #666; line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; }
+        .btn-primary-purple { padding: 12px 40px; background: #7c3aed; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+        footer { background: #2d1b4e; color: white; padding: 2.5rem 2rem; text-align: center; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+    <div class="top-bar"><i class="fas fa-star"></i> Welcome to Luxe Living - Premium Lifestyle Experience</div>
+    <div class="nav-minimal">
+        <div class="brand-name"><i class="fas fa-sparkles"></i> Luxe Living</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Collections</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="hero-video">
+        <div class="hero-content">
+            <h1>Elevate Your Lifestyle</h1>
+            <p>Discover premium wellness products and luxurious experiences curated for you</p>
+            <button>Explore Now</button>
+        </div>
+    </div>
+    <div class="centered-section">
+        <h2>Our Collections</h2>
+        <p>Handpicked selections of the finest lifestyle products and services for discerning customers</p>
+    </div>
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+        <div class="grid-showcase">
+            <div class="showcase-item"><div class="showcase-text"><h3>Skincare</h3><p>Premium beauty essentials</p></div></div>
+            <div class="showcase-item"><div class="showcase-text"><h3>Wellness</h3><p>Holistic health products</p></div></div>
+            <div class="showcase-item"><div class="showcase-text"><h3>Home Décor</h3><p>Luxury interior design</p></div></div>
+            <div class="showcase-item"><div class="showcase-text"><h3>Experiences</h3><p>Curated lifestyle services</p></div></div>
+        </div>
+    </div>
+    <div class="centered-section">
+        <h2>Why Choose Us?</h2>
+        <p>At Luxe Living, we believe in quality over quantity. Every product is carefully selected to meet our high standards. Our commitment is to provide you with the best lifestyle solutions available.</p>
+        <button class="btn-primary-purple">Start Your Journey</button>
+    </div>
+    <footer><p>&copy; 2024 Luxe Living. Elevate Your Standards.</p></footer>
+</body>
+</html>

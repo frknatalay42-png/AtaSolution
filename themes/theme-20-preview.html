@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medino - Healthcare Clinic & Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f9fc; }
+        .wrapper { display: flex; }
+        .sidebar { width: 200px; background: #0ea5e9; color: white; padding: 2rem 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar .logo { font-size: 1.3rem; font-weight: 700; padding: 0 1.5rem; margin-bottom: 2rem; }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin: 0; }
+        .sidebar a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 0.8rem 1.5rem; transition: all 0.3s; border-left: 3px solid transparent; }
+        .sidebar a:hover { background: rgba(0,0,0,0.1); color: white; border-left-color: white; }
+        .main-content { margin-left: 200px; width: calc(100% - 200px); }
+        .hero { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; padding: 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; opacity: 0.95; margin-bottom: 2rem; }
+        .container-main { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 3rem 0; }
+        .stat-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.08); text-align: center; border-bottom: 4px solid #0284c7; }
+        .stat-number { font-size: 2.2rem; font-weight: 700; color: #0284c7; }
+        .stat-label { color: #666; font-size: 0.9rem; }
+        .info-section { background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 3px 12px rgba(0,0,0,0.08); }
+        .info-section h2 { color: #0284c7; margin-bottom: 1.5rem; }
+        footer { background: #0284c7; color: white; padding: 2rem; text-align: center; margin-left: 200px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="logo"><i class="fas fa-hospital"></i> Medino</div>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Doctors</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Book Appointment</a></li>
+                <li><a href="#">Medical Records</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </aside>
+        <div class="main-content">
+            <div class="hero">
+                <h1>Healthcare Excellence</h1>
+                <p>Professional medical care with compassionate service</p>
+            </div>
+            <div class="container-main">
+                <div class="stats-row">
+                    <div class="stat-card"><div class="stat-number">250+</div><div class="stat-label">Patients</div></div>
+                    <div class="stat-card"><div class="stat-number">50+</div><div class="stat-label">Doctors</div></div>
+                    <div class="stat-card"><div class="stat-number">20</div><div class="stat-label">Specialties</div></div>
+                    <div class="stat-card"><div class="stat-number">24/7</div><div class="stat-label">Available</div></div>
+                </div>
+                <div class="info-section">
+                    <h2><i class="fas fa-info-circle"></i> About Our Clinic</h2>
+                    <p>Medino Healthcare provides comprehensive medical services with state-of-the-art facilities and experienced healthcare professionals dedicated to your wellness.</p>
+                </div>
+            </div>
+            <footer><p>&copy; 2024 Medino. Your Health, Our Priority.</p></footer>
+        </div>
+    </div>
+</body>
+</html>

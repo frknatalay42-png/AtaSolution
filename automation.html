@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Tools - Atasolutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: #d4af37;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .nav-links a.active {
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 2px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: transparent;
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            border: 1px solid #d4af37;
+        }
+
+        .social-links a:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            transform: scale(1.15);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 150px;
+            z-index: 101;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+            animation: slideDown 0.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: none;
+            border: none;
+            color: #666;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .lang-option:hover {
+            background: #f5f5f5;
+            color: #d4af37;
+        }
+
+        .lang-option.active {
+            background: #faf7f2;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            margin-top: 60px;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Automation Grid */
+        .automation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .automation-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .automation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border-color: #d4af37;
+        }
+
+        .automation-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .automation-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+        }
+
+        .automation-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .automation-features {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .automation-features li {
+            padding: 0.4rem 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .automation-features li:before {
+            content: "âœ“";
+            color: #d4af37;
+            font-weight: bold;
+            margin-right: 0.7rem;
+        }
+
+        .automation-btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .automation-btn:hover {
+            background: #333;
+            color: #d4af37;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #d4af37;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #e5c45f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 150px;
+            z-index: 101;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+            animation: slideDown 0.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: none;
+            border: none;
+            color: #666;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .lang-option:hover {
+            background: #f5f5f5;
+            color: #d4af37;
+        }
+
+        .lang-option.active {
+            background: #faf7f2;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 2rem 1rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .automation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 1rem; min-width: 0;">
+                <a href="home.html" class="brand"><span>Ata</span>solutions</a>
+                <div style="display: flex; gap: 0.6rem; padding-left: 1rem; border-left: 1px solid #ddd;">
+                    <a href="https://www.facebook.com/atasolutions/" target="_blank" title="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/atasolutions/" target="_blank" title="Twitter" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/atasolutions/" target="_blank" title="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/atasolutions/" target="_blank" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="nav-items">
+                <ul class="nav-links">
+                    <li><a href="home.html" data-i18n="nav:home">Home</a></li>
+                    <li><a href="themes.html" data-i18n="nav:themes">Themes</a></li>
+                    <li><a href="automation.html" class="active" data-i18n="nav:automation">Automation</a></li>
+                    <li><a href="contact.html" data-i18n="nav:contact">Contact</a></li>
+                    <li class="language-selector">
+                        <button class="lang-btn" id="langToggle">
+                            <i class="fas fa-globe"></i>
+                            <span id="langCode">EN</span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <button class="lang-option" data-lang="en">English</button>
+                            <button class="lang-option" data-lang="tr">TÃ¼rkÃ§e</button>
+                            <button class="lang-option" data-lang="nl">Nederlands</button>
+                            <button class="lang-option" data-lang="ru">Ð ÑƒÑÑÐºÐ¸Ð¹</button>
+                            <button class="lang-option" data-lang="es">EspaÃ±ol</button>
+                            <button class="lang-option" data-lang="pt">PortuguÃªs</button>
+                            <button class="lang-option" data-lang="zh">ä¸­æ–‡</button>
+                            <button class="lang-option" data-lang="ar">Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</button>
+                            <button class="lang-option" data-lang="fr">FranÃ§ais</button>
+                            <button class="lang-option" data-lang="it">Italiano</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content - 3D Coverflow Gallery (Exact Prism System) -->
+    <main style="background: #fafafa; min-height: calc(100vh - 100px); display: flex; align-items: center; justify-content: center; position: relative; padding: 20px 20px 60px 20px;">
+        <div style="width: 100%; max-width: 1400px;">
+            <!-- 3D Coverflow Container (Exact system from Prism) -->
+            <div class="coverflow-container" style="perspective: 1200px; height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <div class="coverflow" style="display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; position: relative; width: 100%; height: 400px;">
+                    
+                    <!-- Item 1: Administration Automation -->
+                    <div class="coverflow-item" style="position: absolute; width: 300px; height: 300px; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer; user-select: none;">
+                        <div class="cover" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); position: relative; overflow: hidden; transform-style: preserve-3d; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: white;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-tasks"></i></div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700;">Administration Automation</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">Streamline administrative tasks efficiently</p>
+                        </div>
+                        <div class="reflection" style="position: absolute; top: 100%; left: 0; width: 100%; height: 100%; border-radius: 10px; transform: scaleY(-1); opacity: 0.2; filter: blur(2px); background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%); overflow: hidden;"></div>
+                    </div>
+
+                    <!-- Item 2: Information Processing -->
+                    <div class="coverflow-item" style="position: absolute; width: 300px; height: 300px; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer; user-select: none;">
+                        <div class="cover" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); position: relative; overflow: hidden; transform-style: preserve-3d; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: white;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-brain"></i></div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700;">Information Processing</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">Intelligent data analysis and insights</p>
+                        </div>
+                        <div class="reflection" style="position: absolute; top: 100%; left: 0; width: 100%; height: 100%; border-radius: 10px; transform: scaleY(-1); opacity: 0.2; filter: blur(2px); background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%); overflow: hidden;"></div>
+                    </div>
+
+                    <!-- Item 3: Portal Building -->
+                    <div class="coverflow-item" style="position: absolute; width: 300px; height: 300px; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer; user-select: none;">
+                        <div class="cover" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); position: relative; overflow: hidden; transform-style: preserve-3d; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: white;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-globe"></i></div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700;">Portal Building</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">Create dynamic web portals with ease</p>
+                        </div>
+                        <div class="reflection" style="position: absolute; top: 100%; left: 0; width: 100%; height: 100%; border-radius: 10px; transform: scaleY(-1); opacity: 0.2; filter: blur(2px); background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%); overflow: hidden;"></div>
+                    </div>
+
+                    <!-- Item 4: Portefolio Maker -->
+                    <div class="coverflow-item" style="position: absolute; width: 300px; height: 300px; transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); cursor: pointer; user-select: none;">
+                        <div class="cover" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); position: relative; overflow: hidden; transform-style: preserve-3d; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: white;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-briefcase"></i></div>
+                            <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 700;">Portefolio Maker</h3>
+                            <p style="font-size: 0.9rem; line-height: 1.5;">Showcase your work professionally</p>
+                        </div>
+                        <div class="reflection" style="position: absolute; top: 100%; left: 0; width: 100%; height: 100%; border-radius: 10px; transform: scaleY(-1); opacity: 0.2; filter: blur(2px); background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%); overflow: hidden;"></div>
+                    </div>
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="nav-button prev" style="position: absolute; top: 50%; left: 50px; transform: translateY(-50%); background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; color: #1a1a1a; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px); z-index: 200;">
+                    <span>&#10094;</span>
+                </button>
+                <button class="nav-button next" style="position: absolute; top: 50%; right: 50px; transform: translateY(-50%); background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; color: #1a1a1a; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px); z-index: 200;">
+                    <span>&#10095;</span>
+                </button>
+            </div>
+
+            <!-- Dots indicator -->
+            <div id="dots" style="position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 200;"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Atasolutions. <span data-i18n="automationPage:footer">Premium automation tools and digital solutions.</span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script>
+        // Initialize translations
+        translationManager.updatePageContent();
+        updateLanguageButton();
+        
+        function updateLanguageButton() {
+            const langCode = translationManager.getLanguage().toUpperCase();
+            document.getElementById('langCode').textContent = langCode;
+            
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === translationManager.getLanguage()) {
+                    option.classList.add('active');
+                }
+            });
+        }
+        
+        // Language selector toggle
+        document.getElementById('langToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('langDropdown').classList.toggle('active');
+        });
+        
+        // Language selection
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                translationManager.setLanguage(lang);
+                translationManager.updatePageContent();
+                updateLanguageButton();
+                document.getElementById('langDropdown').classList.remove('active');
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                document.getElementById('langDropdown').classList.remove('active');
+            }
+        });
+
+        // Exact 3D Coverflow System from Prism Theme
+        const items = document.querySelectorAll('.coverflow-item');
+        const dotsContainer = document.getElementById('dots');
+        const container = document.querySelector('.coverflow-container');
+        let currentIndex = 0;
+        let isAnimating = false;
+
+        // Image data with titles and descriptions
+        const imageData = [
+            {
+                title: "Administration Automation",
+                description: "Streamline administrative tasks efficiently"
+            },
+            {
+                title: "Information Processing",
+                description: "Intelligent data analysis and insights"
+            },
+            {
+                title: "Portal Building",
+                description: "Create dynamic web portals with ease"
+            },
+            {
+                title: "Portefolio Maker",
+                description: "Showcase your work professionally"
+            }
+        ];
+
+        // Create dots
+        items.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.cssText = 'width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); cursor: pointer; transition: all 0.3s ease;';
+            dot.onclick = () => goToIndex(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        let autoplayInterval = null;
+        let isPlaying = true;
+        const playPauseButton = document.querySelector('.play-pause-button');
+        const playIcon = playPauseButton ? playPauseButton.querySelector('.play-icon') : null;
+        const pauseIcon = playPauseButton ? playPauseButton.querySelector('.pause-icon') : null;
+
+        function updateCoverflow() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            items.forEach((item, index) => {
+                let offset = index - currentIndex;
+                
+                if (offset > items.length / 2) {
+                    offset = offset - items.length;
+                }
+                else if (offset < -items.length / 2) {
+                    offset = offset + items.length;
+                }
+                
+                const absOffset = Math.abs(offset);
+                const sign = Math.sign(offset);
+                
+                let translateX = offset * 220;
+                let translateZ = -absOffset * 200;
+                let rotateY = -sign * Math.min(absOffset * 60, 60);
+                let opacity = 1 - (absOffset * 0.2);
+                let scale = 1 - (absOffset * 0.1);
+
+                if (absOffset > 3) {
+                    opacity = 0;
+                    translateX = sign * 800;
+                }
+
+                item.style.transform = `
+                    translateX(${translateX}px) 
+                    translateZ(${translateZ}px) 
+                    rotateY(${rotateY}deg)
+                    scale(${scale})
+                `;
+                item.style.opacity = opacity;
+                item.style.zIndex = 100 - absOffset;
+
+                item.classList.toggle('active', index === currentIndex);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+                if (index === currentIndex) {
+                    dot.style.background = 'rgba(255, 255, 255, 0.8)';
+                    dot.style.transform = 'scale(1.3)';
+                } else {
+                    dot.style.background = 'rgba(255, 255, 255, 0.3)';
+                    dot.style.transform = 'scale(1)';
+                }
+            });
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 600);
+        }
+
+        function navigate(direction) {
+            if (isAnimating) return;
+            
+            currentIndex = currentIndex + direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = items.length - 1;
+            } else if (currentIndex >= items.length) {
+                currentIndex = 0;
+            }
+            
+            updateCoverflow();
+        }
+
+        function goToIndex(index) {
+            if (isAnimating || index === currentIndex) return;
+            currentIndex = index;
+            updateCoverflow();
+        }
+
+        // Keyboard navigation
+        container.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+        });
+
+        // Click on items to select
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => goToIndex(index));
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isSwiping = false;
+
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+            isSwiping = true;
+        }, { passive: true });
+
+        container.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            
+            const currentX = e.changedTouches[0].screenX;
+            const diff = currentX - touchStartX;
+            
+            if (Math.abs(diff) > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        container.addEventListener('touchend', (e) => {
+            if (!isSwiping) return;
+            
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+            isSwiping = false;
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 30;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+            
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+                handleUserInteraction();
+                
+                if (diffX > 0) {
+                    navigate(1);
+                } else {
+                    navigate(-1);
+                }
+            }
+        }
+
+        // Autoplay functionality
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+            isPlaying = false;
+            if (playIcon) playIcon.style.display = 'block';
+            if (pauseIcon) pauseIcon.style.display = 'none';
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCoverflow();
+            }, 4000);
+            isPlaying = true;
+            if (playIcon) playIcon.style.display = 'none';
+            if (pauseIcon) pauseIcon.style.display = 'block';
+        }
+
+        function toggleAutoplay() {
+            if (isPlaying) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        }
+
+        function handleUserInteraction() {
+            stopAutoplay();
+        }
+
+        // Add event listeners to stop autoplay on manual navigation
+        items.forEach((item) => {
+            item.addEventListener('click', handleUserInteraction);
+        });
+
+        document.querySelector('.nav-button.prev').addEventListener('click', () => {
+            handleUserInteraction();
+            navigate(-1);
+        });
+
+        document.querySelector('.nav-button.next').addEventListener('click', () => {
+            handleUserInteraction();
+            navigate(1);
+        });
+
+        if (playPauseButton) {
+            playPauseButton.addEventListener('click', toggleAutoplay);
+        }
+
+        // Initialize
+        updateCoverflow();
+        startAutoplay();
+
+        // Add keydown to container to enable keyboard navigation
+        setTimeout(() => container.focus(), 100);
+    </script>
+
+    <style>
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .coverflow-item.active {
+            z-index: 100;
+        }
+
+        .coverflow-item.active .cover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .dot.active {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.3);
+        }
+
+        .play-pause-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.1);
+        }
+    </style>
+</body>
+</html>
+
+

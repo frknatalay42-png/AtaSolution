@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elaadmin - Bootstrap Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f5f7f9; }
+        .admin-wrapper { display: flex; height: 100vh; }
+        .left-panel { width: 250px; background: #1a237e; color: white; padding: 2rem 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .left-panel .brand { font-size: 1.5rem; font-weight: 700; padding: 0 1.5rem; margin-bottom: 2rem; }
+        .left-panel ul { list-style: none; }
+        .left-panel li { margin: 0; }
+        .left-panel a { display: block; color: #b0bec5; text-decoration: none; padding: 1rem 1.5rem; transition: all 0.3s; border-left: 3px solid transparent; }
+        .left-panel a:hover { background: #283593; color: white; border-left-color: #3f51b5; }
+        .top-bar { margin-left: 250px; background: white; border-bottom: 1px solid #e0e0e0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .top-bar-title { font-size: 1.3rem; font-weight: 700; color: #333; }
+        .user-menu { display: flex; gap: 1rem; align-items: center; }
+        .main-content { margin-left: 250px; padding: 2rem; flex: 1; overflow-y: auto; }
+        .dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid #3f51b5; }
+        .card-value { font-size: 2rem; font-weight: 700; color: #1a237e; margin-bottom: 0.5rem; }
+        .card-label { color: #999; font-size: 0.9rem; }
+        .chart-section { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .chart-title { font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 1rem; }
+        footer { margin-left: 250px; background: #1a237e; color: white; padding: 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <aside class="left-panel">
+            <div class="brand"><i class="fas fa-chart-line"></i> Elaadmin</div>
+            <ul>
+                <li><a href="#"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-bar-chart"></i> Analytics</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+            </ul>
+        </aside>
+        <div style="margin-left: 250px; flex: 1; display: flex; flex-direction: column;">
+            <div class="top-bar">
+                <div class="top-bar-title">Dashboard</div>
+                <div class="user-menu">
+                    <i class="fas fa-bell" style="cursor: pointer; font-size: 1.2rem; color: #666;"></i>
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%;"></div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="dashboard-cards">
+                    <div class="card"><div class="card-value">24.5K</div><div class="card-label">Total Users</div></div>
+                    <div class="card"><div class="card-value">$2.4M</div><div class="card-label">Revenue</div></div>
+                    <div class="card"><div class="card-value">98%</div><div class="card-label">Uptime</div></div>
+                    <div class="card"><div class="card-value">847</div><div class="card-label">Conversions</div></div>
+                </div>
+                <div class="chart-section">
+                    <div class="chart-title">Monthly Statistics</div>
+                    <div style="height: 200px; background: linear-gradient(to top, #667eea20, transparent); border-radius: 8px; display: flex; align-items: flex-end; gap: 1rem; padding: 1rem;">
+                        <div style="flex: 1; height: 40%; background: #667eea; border-radius: 4px;"></div>
+                        <div style="flex: 1; height: 60%; background: #667eea; border-radius: 4px;"></div>
+                        <div style="flex: 1; height: 45%; background: #667eea; border-radius: 4px;"></div>
+                        <div style="flex: 1; height: 70%; background: #667eea; border-radius: 4px;"></div>
+                        <div style="flex: 1; height: 55%; background: #667eea; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 Elaadmin. Admin Dashboard.</p></footer>
+</body>
+</html>

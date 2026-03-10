@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife - Gym & Fitness Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: white; }
+        .banner-top { background: #ef4444; color: white; padding: 0.7rem 2rem; text-align: center; font-size: 0.9rem; font-weight: 600; }
+        .header-flex { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+        .gym-brand { font-size: 1.5rem; font-weight: 800; color: #ef4444; }
+        .header-nav { display: flex; gap: 2.5rem; }
+        .header-nav a { color: #6b7280; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+        .header-nav a:hover { color: #ef4444; }
+        .full-hero { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 5rem 2rem; text-align: center; position: relative; }
+        .full-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .full-hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; opacity: 0.95; }
+        .full-hero button { padding: 15px 50px; background: white; color: #ef4444; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; }
+        .testimonial-section { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+        .test-title { text-align: center; font-size: 2rem; color: #111827; margin-bottom: 3rem; font-weight: 700; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .testimonial-card { background: #f9fafb; padding: 2rem; border-radius: 12px; border-left: 4px solid #ef4444; }
+        .testimonial-card h4 { color: #111827; margin-bottom: 0.5rem; font-weight: 700; }
+        .testimonial-card p.role { color: #ef4444; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        .testimonial-card p { color: #6b7280; line-height: 1.6; font-style: italic; margin: 0; }
+        .stars { color: #fbbf24; margin-bottom: 1rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 1200px; margin: 4rem auto; padding: 0 2rem; background: #f9fafb; padding-top: 3rem; padding-bottom: 3rem; }
+        .service-box { text-align: center; }
+        .service-icon { font-size: 2.5rem; color: #ef4444; margin-bottom: 1rem; }
+        .service-box h3 { color: #111827; margin-bottom: 0.5rem; font-weight: 700; }
+        .service-box p { color: #6b7280; font-size: 0.9rem; }
+        footer { background: #1f2937; color: #d1d5db; padding: 2.5rem 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="banner-top"><i class="fas fa-heart"></i> New Year, New Goals - Join Our Community Today!</div>
+    <div class="header-flex">
+        <div class="gym-brand"><i class="fas fa-dumbbell"></i> FitLife</div>
+        <div class="header-nav">
+            <a href="#">Programs</a>
+            <a href="#">Classes</a>
+            <a href="#">Members</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div class="full-hero">
+        <h1>Transform Your Body, Change Your Life</h1>
+        <p>Join thousands of members achieving their fitness goals with our comprehensive training programs and supportive community</p>
+        <button>Start Your Journey</button>
+    </div>
+    <div class="testimonial-section">
+        <h2 class="test-title">Success Stories</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <h4>Sarah Mitchell</h4>
+                <p class="role">Weight Loss Champion</p>
+                <p>"FitLife transformed my life in 6 months. The trainers are supportive and the community keeps me motivated every single day!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <h4>James Rodriguez</h4>
+                <p class="role">Muscle Building Goal</p>
+                <p>"Best decision I've made. The personalized training plans and nutrition guidance helped me achieve results faster than expected."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <h4>Emma Wilson</h4>
+                <p class="role">Fitness Enthusiast</p>
+                <p>"The group classes are energetic and fun. I've made incredible friends and feel stronger than ever before. Highly recommend!"</p>
+            </div>
+        </div>
+    </div>
+    <div class="services-grid">
+        <div class="service-box">
+            <div class="service-icon"><i class="fas fa-person-running"></i></div>
+            <h3>Personal Training</h3>
+            <p>One-on-one coaching tailored to your goals</p>
+        </div>
+        <div class="service-box">
+            <div class="service-icon"><i class="fas fa-users"></i></div>
+            <h3>Group Classes</h3>
+            <p>High-energy group fitness programs</p>
+        </div>
+        <div class="service-box">
+            <div class="service-icon"><i class="fas fa-utensils"></i></div>
+            <h3>Nutrition Plans</h3>
+            <p>Expert nutrition guidance and meal planning</p>
+        </div>
+        <div class="service-box">
+            <div class="service-icon"><i class="fas fa-heart-pulse"></i></div>
+            <h3>Health Tracking</h3>
+            <p>Monitor your progress with our app</p>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 FitLife. Your Fitness, Your Community, Your Success.</p></footer>
+</body>
+</html>

@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atasolutions - Premium Theme Showcase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: #d4af37;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .nav-links a.active {
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 2px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: transparent;
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            border: 1px solid #d4af37;
+        }
+
+        .social-links a:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            transform: scale(1.15);
+        }
+
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            min-width: 150px;
+            z-index: 101;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .lang-dropdown.active {
+            display: block;
+            animation: slideDown 0.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: none;
+            border: none;
+            color: #666;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .lang-option:hover {
+            background: #f5f5f5;
+            color: #d4af37;
+        }
+
+        .lang-option.active {
+            background: #faf7f2;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+            margin-top: 20px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn {
+            padding: 0.4rem 0.9rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #666;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            background: #faf7f2;
+        }
+
+        .filter-btn.active {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Theme Card */
+        .theme-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+
+        .theme-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            border-color: #e0e0e0;
+        }
+
+        .theme-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #f5f5f5;
+            flex: 0;
+        }
+
+        .theme-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.4rem;
+        }
+
+        .theme-description {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .theme-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .theme-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .theme-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            background: #f5f5f5;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .theme-actions {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .btn-preview {
+            flex: 1;
+            padding: 0.45rem 0.8rem;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-preview:hover {
+            background: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-details {
+            padding: 0.45rem 0.8rem;
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-details:hover {
+            border-color: #1a1a1a;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-bar {
+                gap: 0.6rem;
+                margin-bottom: 2rem;
+            }
+
+            .filter-btn {
+                padding: 0.35rem 0.7rem;
+                font-size: 0.8rem;
+            }
+
+            .main-container {
+                padding: 1.5rem 1rem;
+            }
+
+            header {
+                padding: 0.8rem 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 1rem; min-width: 0;">
+                <a href="home.html" class="brand"><span>Ata</span>solutions</a>
+                <div style="display: flex; gap: 0.6rem; padding-left: 1rem; border-left: 1px solid #ddd;">
+                    <a href="https://www.facebook.com/atasolutions/" target="_blank" title="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com/atasolutions/" target="_blank" title="Twitter" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/atasolutions/" target="_blank" title="LinkedIn" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/atasolutions/" target="_blank" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border: 1px solid #d4af37; border-radius: 50%; color: #d4af37; text-decoration: none; font-size: 0.8rem; transition: all 0.3s;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="nav-items">
+                <ul class="nav-links">
+                    <li><a href="home.html" data-i18n="nav:home">Home</a></li>
+                    <li><a href="themes.html" class="active" data-i18n="nav:themes">Themes</a></li>
+                    <li class="language-selector">
+                        <button class="lang-btn" id="langToggle">
+                            <i class="fas fa-globe"></i>
+                            <span id="langCode">EN</span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <button class="lang-option" data-lang="en">English</button>
+                            <button class="lang-option" data-lang="tr">Türkçe</button>
+                            <button class="lang-option" data-lang="nl">Nederlands</button>
+                            <button class="lang-option" data-lang="ru">Русский</button>
+                            <button class="lang-option" data-lang="es">Español</button>
+                            <button class="lang-option" data-lang="pt">Português</button>
+                            <button class="lang-option" data-lang="zh">中文</button>
+                            <button class="lang-option" data-lang="ar">العربية</button>
+                            <button class="lang-option" data-lang="fr">Français</button>
+                            <button class="lang-option" data-lang="it">Italiano</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+            <span class="filter-label" data-i18n="themesPage:categoryLabel">Category:</span>
+            <button class="filter-btn active" data-filter="all" data-i18n="themesPage:all">All</button>
+            <button class="filter-btn" data-filter="admin" data-i18n="themesPage:admin">Admin</button>
+            <button class="filter-btn" data-filter="ecommerce" data-i18n="themesPage:ecommerce">E-Commerce</button>
+            <button class="filter-btn" data-filter="landing" data-i18n="themesPage:landing">Landing</button>
+            <button class="filter-btn" data-filter="food" data-i18n="themesPage:food">Food</button>
+            <button class="filter-btn" data-filter="healthcare" data-i18n="themesPage:healthcare">Healthcare</button>
+            <button class="filter-btn" data-filter="travel" data-i18n="themesPage:travel">Travel</button>
+            <button class="filter-btn" data-filter="portfolio" data-i18n="themesPage:portfolio">Portfolio</button>
+            <button class="filter-btn" data-filter="business" data-i18n="themesPage:business">Business</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="gallery" class="gallery-grid">
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="admin">
+                            <div class="card h-100 shadow-sm theme-item transition-all">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/01-windmill.jpg" alt="Windmill Dashboard" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-01-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="pages/theme-01-details.html" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Windmill Dashboard</h5>
+                                    <p class="card-text text-muted small">Modern admin dashboard with Tailwind CSS</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-primary">Tailwind CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 02 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="portfolio">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/02-atasolutions.jpg" alt="Portfolio" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-02-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Atasolutions Portfolio</h5>
+                                    <p class="card-text text-muted small">Professional web design and development services showcase</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Portfolio</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 03 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="admin">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/03-softui.jpg" alt="Soft UI Dashboard" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-03-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Soft UI Dashboard</h5>
+                                    <p class="card-text text-muted small">Beautiful, modern admin interface</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 5</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 04 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="admin">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/04-skydash.jpg" alt="Skydash" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-04-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Skydash</h5>
+                                    <p class="card-text text-muted small">Responsive dashboard with Bootstrap</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 05 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="admin">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/05-corona.jpg" alt="Corona Admin" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-05-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Corona Admin</h5>
+                                    <p class="card-text text-muted small">Medical dashboard interface</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 06 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="ecommerce">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/06-ogani.jpg" alt="Ogani" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-06-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ogani Master</h5>
+                                    <p class="card-text text-muted small">Grocery and food store e-commerce</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 07 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="ecommerce">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/07-eshopper.jpg" alt="Eshopper" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-07-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Eshopper</h5>
+                                    <p class="card-text text-muted small">Fashion and retail e-commerce store</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 08 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="ecommerce">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/08-cozastore.jpg" alt="Cozastore" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-08-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Cozastore</h5>
+                                    <p class="card-text text-muted small">Multi-category online shopping platform</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 09 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="ecommerce">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/09-karma.jpg" alt="Karma" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-09-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Karma</h5>
+                                    <p class="card-text text-muted small">Marketplace and vendor platform</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 10 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="ecommerce">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/10-zayshop.jpg" alt="Zay Shop" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-10-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Zay Shop</h5>
+                                    <p class="card-text text-muted small">Boutique and niche products store</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 11 - Milestone 1 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="landing">
+                            <div class="card h-100 shadow-sm theme-item border-primary border-2">
+                                <div class="badge bg-danger position-absolute top-0 start-50 translate-middle-x mt-2">Featured</div>
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/11-applab.jpg" alt="Applab" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-11-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="pages/theme-01-details.html" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Applab</h5>
+                                    <p class="card-text text-muted small">Tech startup and app showcase landing page</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-info">Pug+SCSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 12 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="landing">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/12-jadoo.jpg" alt="Jadoo" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-12-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Jadoo</h5>
+                                    <p class="card-text text-muted small">Travel booking and destination guide</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 13 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="landing">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/13-rainblur.jpg" alt="Rainblur" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-13-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Rainblur Landing</h5>
+                                    <p class="card-text text-muted small">Creative agency and portfolio</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 14 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="landing">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/14-nexter.jpg" alt="Nexter" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-14-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Nexter</h5>
+                                    <p class="card-text text-muted small">Real estate and property listings</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">CSS Grid</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 15 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="landing">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/15-appco.jpg" alt="Appco" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-15-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Appco Master</h5>
+                                    <p class="card-text text-muted small">B2B software and service showcase</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 16 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="food">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/16-feane.jpg" alt="Feane" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-16-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Elaadmin Master</h5>
+                                    <p class="card-text text-muted small">Bootstrap admin panel with jQuery widgets</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 17 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="food">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/17-cakezone.jpg" alt="Cakezone" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-17-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Cakezone</h5>
+                                    <p class="card-text text-muted small">Bakery and pastry shop website</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 18 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="food">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/18-foodwagon.jpg" alt="Foodwagon" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-18-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Foodwagon</h5>
+                                    <p class="card-text text-muted small">Food delivery and ordering system</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 19 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="food">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/19-foodiblog.jpg" alt="FoodiBlog" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-19-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">FoodiBlog</h5>
+                                    <p class="card-text text-muted small">Food blog and recipe sharing platform</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 20 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="healthcare">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/20-medino.jpg" alt="Medino" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-20-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Medino</h5>
+                                    <p class="card-text text-muted small">Healthcare clinic and doctor appointments</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 21 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="healthcare">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/21-dentalpro.jpg" alt="DentalPro" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-21-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">DentalPro</h5>
+                                    <p class="card-text text-muted small">Dental clinic and patient management</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 5</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 22 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="healthcare">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/22-arsha.jpg" alt="Arsha" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-22-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Arsha Master</h5>
+                                    <p class="card-text text-muted small">Professional services and consulting</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 23 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="travel">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/23-gotrip.jpg" alt="Gotrip" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-23-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gotrip</h5>
+                                    <p class="card-text text-muted small">Travel agency and tour booking</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 24 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="travel">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/24-carbook.jpg" alt="CarBook" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-24-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">CarBook</h5>
+                                    <p class="card-text text-muted small">Car rental and booking platform</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 25 - Milestone 2 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="portfolio">
+                            <div class="card h-100 shadow-sm theme-item border-primary border-2">
+                                <div class="badge bg-danger position-absolute top-0 start-50 translate-middle-x mt-2">Featured</div>
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/25-majestic.jpg" alt="Majestic" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-25-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="pages/theme-25-details.html" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Majestic</h5>
+                                    <p class="card-text text-muted small">Creative portfolio and agency showcase</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-info">Pug+SCSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 26 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="portfolio">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/26-personal.jpg" alt="Personal" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-26-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">StartBootstrap Personal</h5>
+                                    <p class="card-text text-muted small">Personal brand and freelancer portfolio</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 27 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="portfolio">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/27-creative.jpg" alt="Creative" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-27-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">StartBootstrap Creative</h5>
+                                    <p class="card-text text-muted small">Creative studio and agency portfolio</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 28 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="portfolio">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/28-glint.jpg" alt="Glint" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-28-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Glint Master</h5>
+                                    <p class="card-text text-muted small">Minimalist portfolio and design showcase</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-warning">HTML/CSS</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 29 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="business">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/29-insure.jpg" alt="Insure" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-29-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Insure Master</h5>
+                                    <p class="card-text text-muted small">Insurance company website</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Theme 30 -->
+                        <div class="col-md-6 col-lg-4 theme-card" data-category="business">
+                            <div class="card h-100 shadow-sm theme-item">
+                                <div class="theme-image position-relative overflow-hidden bg-light" style="height: 200px;">
+                                    <img src="images/thumbnails/30-ecohosting.jpg" alt="Ecohosting" class="img-fluid w-100 h-100 object-fit-cover">
+                                    <div class="overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-0">
+                                        <div class="d-flex align-items-center justify-content-center h-100 gap-2">
+                                            <a href="themes/theme-30-preview.html" class="btn btn-primary btn-sm">Preview</a>
+                                            <a href="#" class="btn btn-outline-light btn-sm">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Ecohosting</h5>
+                                    <p class="card-text text-muted small">Web hosting company website</p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success">Bootstrap 4</span>
+                                        <span class="badge bg-info">Responsive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Atasolutions <span data-i18n="themesPage:footer">Theme Showcase. Premium designs for modern web.</span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/translations.js"></script>
+    <script>
+        const themes = [
+            { id: 1, fileId: 31, name: 'Digital Canvas', desc: 'Modern 3D portfolio showcase with cutting-edge visual effects and interactive design', category: 'portfolio', tech: 'CSS3' },
+            { id: 2, fileId: 32, name: 'Crystal Gallery', desc: 'Beautiful 3D card gallery with smooth animations and interactive browsing experience', category: 'portfolio', tech: 'HTML/CSS' },
+            { id: 3, fileId: 33, name: 'Cosmic Motion', desc: 'Premium landing page with motion video background and fully responsive design', category: 'landing', tech: 'Bootstrap 5' },
+            { id: 4, fileId: 1, name: 'Admin Pro', desc: 'Professional admin dashboard with modern UI and comprehensive widgets', category: 'admin', tech: 'Tailwind CSS' },
+            { id: 5, fileId: 2, name: 'Creative Studio', desc: 'Professional portfolio and web design services showcase', category: 'portfolio', tech: 'Bootstrap 5' },
+            { id: 6, fileId: 3, name: 'Soft UI Dashboard', desc: 'Elegant admin interface with soft design aesthetics and smooth interactions', category: 'admin', tech: 'Bootstrap 5' },
+            { id: 7, fileId: 4, name: 'Analytics Hub', desc: 'Responsive analytics dashboard for data visualization and insights', category: 'admin', tech: 'Bootstrap 4' },
+            { id: 8, fileId: 5, name: 'Health Dashboard', desc: 'Medical dashboard interface for healthcare professionals', category: 'admin', tech: 'Bootstrap 4' },
+            { id: 9, fileId: 6, name: 'Fresh Market', desc: 'E-commerce platform for grocery and food store management', category: 'ecommerce', tech: 'HTML/CSS' },
+            { id: 10, fileId: 7, name: 'Fashion Hub', desc: 'Modern e-commerce store for fashion and retail products', category: 'ecommerce', tech: 'Bootstrap 4' },
+            { id: 11, fileId: 8, name: 'Retail Pro', desc: 'Multi-category online shopping platform with complete e-commerce features', category: 'ecommerce', tech: 'HTML/CSS' },
+            { id: 12, fileId: 9, name: 'Marketplace Pro', desc: 'Vendor marketplace and shopping platform for online sellers', category: 'ecommerce', tech: 'Bootstrap 4' },
+            { id: 13, fileId: 10, name: 'Boutique', desc: 'Boutique and niche products online store with premium design', category: 'ecommerce', tech: 'HTML/CSS' },
+            { id: 14, fileId: 11, name: 'App Launcher', desc: 'Tech startup and mobile app showcase landing page', category: 'landing', tech: 'Pug+SCSS' },
+            { id: 15, fileId: 12, name: 'Travel Sphere', desc: 'Travel booking and destination guide platform', category: 'landing', tech: 'Bootstrap 4' },
+            { id: 16, fileId: 13, name: 'Creative Agency', desc: 'Creative agency and portfolio showcase with modern design', category: 'landing', tech: 'HTML/CSS' },
+            { id: 17, fileId: 14, name: 'Property Hub', desc: 'Real estate and property listings management system', category: 'landing', tech: 'CSS Grid' },
+            { id: 18, fileId: 15, name: 'Enterprise Suite', desc: 'B2B software and service showcase for enterprise solutions', category: 'landing', tech: 'Bootstrap 4' },
+            { id: 19, fileId: 16, name: 'Admin Dashboard', desc: 'Bootstrap admin panel with jQuery widgets and additional features', category: 'food', tech: 'Bootstrap 4' },
+            { id: 20, fileId: 17, name: 'Bakery Hub', desc: 'Bakery and pastry shop website with menu and ordering', category: 'food', tech: 'Bootstrap 4' },
+            { id: 21, fileId: 18, name: 'Food Express', desc: 'Food delivery and restaurant ordering system', category: 'food', tech: 'Bootstrap 4' },
+            { id: 22, fileId: 19, name: 'Food Chronicles', desc: 'Food blog and recipe sharing platform for culinary enthusiasts', category: 'food', tech: 'Bootstrap 4' },
+            { id: 23, fileId: 20, name: 'Care Center', desc: 'Healthcare clinic and doctor appointment management system', category: 'healthcare', tech: 'Bootstrap 4' },
+            { id: 24, fileId: 21, name: 'Dental Care', desc: 'Dental clinic website with patient management features', category: 'healthcare', tech: 'Bootstrap 5' },
+            { id: 25, fileId: 22, name: 'Professional Services', desc: 'Consulting and professional services company website', category: 'healthcare', tech: 'HTML/CSS' },
+            { id: 26, fileId: 23, name: 'Journey Planner', desc: 'Travel agency and tour booking platform with destination guides', category: 'travel', tech: 'Bootstrap 4' },
+            { id: 27, fileId: 24, name: 'Vehicle Booking', desc: 'Car rental and vehicle booking platform', category: 'travel', tech: 'Bootstrap 4' },
+            { id: 28, fileId: 25, name: 'Portfolio Showcase', desc: 'Creative portfolio and agency showcase with professional design', category: 'portfolio', tech: 'Pug+SCSS' },
+            { id: 29, fileId: 26, name: 'Personal Brand', desc: 'Personal brand and freelancer portfolio website', category: 'portfolio', tech: 'Bootstrap 4' },
+            { id: 30, fileId: 27, name: 'Creative Lab', desc: 'Creative studio and agency portfolio with modern aesthetics', category: 'portfolio', tech: 'Bootstrap 4' },
+            { id: 31, fileId: 28, name: 'Minimal Portfolio', desc: 'Minimalist portfolio and design showcase for creators', category: 'portfolio', tech: 'HTML/CSS' },
+            { id: 32, fileId: 29, name: 'InsureOne', desc: 'Insurance company website with quote and policy management', category: 'business', tech: 'Bootstrap 4' },
+            { id: 33, fileId: 30, name: 'Cloud Services', desc: 'Web hosting and cloud services company website', category: 'business', tech: 'Bootstrap 4' }
+        ];
+
+        function renderCards(filter = 'all') {
+            const gallery = document.getElementById('gallery');
+            let html = '';
+
+            themes.forEach(theme => {
+                if (filter === 'all' || theme.category === filter) {
+                    // Get translated description, fallback to original desc if not available
+                    let translatedDesc = theme.desc; // Default to original
+                    
+                    try {
+                        const currentLang = translationManager.getLanguage();
+                        if (translations && translations[currentLang] && translations[currentLang].themesPage && translations[currentLang].themesPage.themes) {
+                            const themeTranslations = translations[currentLang].themesPage.themes;
+                            translatedDesc = themeTranslations[`theme${theme.id}`] || theme.desc;
+                        }
+                    } catch (e) {
+                        // If translation fails, use original desc
+                        console.error('Translation error:', e);
+                    }
+                    
+                    html += `
+                        <div class="theme-card" data-category="${theme.category}">
+                            <div class="theme-card-header">
+                                <span class="theme-badge">${theme.category.toUpperCase()}</span>
+                                <h3 class="theme-title">${theme.name}</h3>
+                                <p class="theme-description">${translatedDesc}</p>
+                            </div>
+                            <div class="theme-card-body">
+                                <div class="theme-tags">
+                                    <span class="theme-tag">${theme.tech}</span>
+                                    <span class="theme-tag">Responsive</span>
+                                </div>
+                                <div class="theme-actions">
+                                    <a href="themes/theme-${String(theme.fileId).padStart(2, '0')}-preview.html" class="btn-preview">Preview</a>
+                                    <a href="#" class="btn-details"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            gallery.innerHTML = html;
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderCards(this.dataset.filter);
+            });
+        });
+
+        // Initial render
+        renderCards();
+        
+        // Initialize translations
+        translationManager.updatePageContent();
+        updateLanguageButton();
+        
+        function updateLanguageButton() {
+            const langCode = translationManager.getLanguage().toUpperCase();
+            document.getElementById('langCode').textContent = langCode;
+            
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === translationManager.getLanguage()) {
+                    option.classList.add('active');
+                }
+            });
+        }
+        
+        // Language selector toggle
+        document.getElementById('langToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('langDropdown').classList.toggle('active');
+        });
+        
+        // Language selection
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                translationManager.setLanguage(lang);
+                translationManager.updatePageContent();
+                translateButtons();
+                updateLanguageButton();
+                renderCards(); // Re-render cards with translated descriptions
+                document.getElementById('langDropdown').classList.remove('active');
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.language-selector')) {
+                document.getElementById('langDropdown').classList.remove('active');
+            }
+        });
+        
+        // Translate Preview and Details buttons dynamically
+        function translateButtons() {
+            const previewText = translationManager.translate('themesPage', 'preview');
+            const detailsText = translationManager.translate('themesPage', 'details');
+            
+            document.querySelectorAll('.btn.btn-primary.btn-sm, .btn.btn-outline-light.btn-sm').forEach(btn => {
+                if (btn.textContent.trim() === 'Preview' || btn.textContent === previewText) {
+                    btn.textContent = previewText;
+                } else if (btn.textContent.trim() === 'Details' || btn.textContent === detailsText) {
+                    btn.textContent = detailsText;
+                }
+            });
+        }
+        
+        // Initialize translations
+        translationManager.updatePageContent();
+        translateButtons();
+        updateLanguageButton();
+    </script>
+</body>
+</html>

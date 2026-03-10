@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsha - Professional Services & Consulting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: white; }
+        .minimal-header { background: white; padding: 1.2rem 2rem; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 100; }
+        .header-wrapper { max-width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-size: 1.4rem; font-weight: 800; color: #16a34a; }
+        .quick-nav { display: flex; gap: 2.5rem; }
+        .quick-nav a { color: #666; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .quick-nav a:hover { color: #16a34a; }
+        .full-width-section { width: 100%; padding: 5rem 2rem; }
+        .hero-banner { background: linear-gradient(135deg, #16a34a, #15803d); color: white; text-align: center; padding: 6rem 2rem; }
+        .hero-banner h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero-banner p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-banner button { padding: 14px 45px; background: white; color: #16a34a; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+        .centered-content { max-width: 900px; margin: 0 auto; }
+        .text-center-block h2 { font-size: 2rem; color: #333; text-align: center; margin-bottom: 1.5rem; font-weight: 700; }
+        .text-center-block p { color: #666; line-height: 1.8; text-align: center; font-size: 1rem; }
+        .features-flex { display: flex; gap: 2rem; justify-content: center; margin: 3rem 0; flex-wrap: wrap; }
+        .feature-box { flex: 0 1 200px; background: #f0fdf4; padding: 2rem; border-radius: 12px; text-align: center; border-top: 4px solid #16a34a; }
+        .feature-box-icon { font-size: 2.5rem; color: #16a34a; margin-bottom: 1rem; }
+        .feature-box h4 { color: #333; margin-bottom: 0.5rem; font-weight: 700; }
+        .feature-box p { color: #666; font-size: 0.9rem; }
+        .expertise-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; margin: 3rem 0; max-width: 1100px; margin-left: auto; margin-right: auto; }
+        .expertise-card { background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 2.2rem; text-align: left; transition: all 0.3s; }
+        .expertise-card:hover { border-color: #16a34a; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.12); }
+        .expertise-card h3 { color: #333; margin-bottom: 1rem; font-weight: 700; }
+        .expertise-card p { color: #666; line-height: 1.6; font-size: 0.95rem; }
+        .colored-section { background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 4rem 2rem; }
+        footer { background: #1b4332; color: white; padding: 2.5rem 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="minimal-header">
+        <div class="header-wrapper">
+            <div class="brand"><i class="fas fa-leaf"></i> Arsha Consulting</div>
+            <div class="quick-nav">
+                <a href="#">Services</a>
+                <a href="#">Expertise</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-banner">
+        <h1>Professional Services That Drive Growth</h1>
+        <p>Strategic consulting solutions tailored to your business needs</p>
+        <button>Get Started Today</button>
+    </div>
+    <div class="full-width-section centered-content">
+        <div class="text-center-block">
+            <h2>Why Partner With Us?</h2>
+            <p>At Arsha, we combine deep industry expertise with innovative strategies to help your business thrive. Our team of experienced consultants has worked with companies of all sizes to achieve their goals.</p>
+        </div>
+        <div class="features-flex">
+            <div class="feature-box"><div class="feature-box-icon"><i class="fas fa-chart-line"></i></div><h4>Growth Strategy</h4><p>Data-driven approach</p></div>
+            <div class="feature-box"><div class="feature-box-icon"><i class="fas fa-cogs"></i></div><h4>Implementation</h4><p>Seamless execution</p></div>
+            <div class="feature-box"><div class="feature-box-icon"><i class="fas fa-users"></i></div><h4>Support</h4><p>24/7 guidance</p></div>
+        </div>
+    </div>
+    <div class="colored-section">
+        <div class="centered-content">
+            <h2 style="text-align: center; color: #333; margin-bottom: 2rem; font-size: 2rem; font-weight: 700;">Our Core Expertise</h2>
+            <div class="expertise-cards">
+                <div class="expertise-card">
+                    <h3><i class="fas fa-briefcase" style="color: #16a34a; margin-right: 0.5rem;"></i>Business Strategy</h3>
+                    <p>Develop comprehensive strategies that align with your vision and market opportunities.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3><i class="fas fa-rocket" style="color: #16a34a; margin-right: 0.5rem;"></i>Digital Transformation</h3>
+                    <p>Navigate the digital landscape with confidence and modern solutions.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3><i class="fas fa-handshake" style="color: #16a34a; margin-right: 0.5rem;"></i>Organizational Change</h3>
+                    <p>Lead your team through transformational changes with proven methodologies.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3><i class="fas fa-lightbulb" style="color: #16a34a; margin-right: 0.5rem;"></i>Innovation Consulting</h3>
+                    <p>Unlock new opportunities and drive innovation across your organization.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3><i class="fas fa-globe" style="color: #16a34a; margin-right: 0.5rem;"></i>Market Expansion</h3>
+                    <p>Enter new markets with confidence backed by thorough market research.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3><i class="fas fa-shield-alt" style="color: #16a34a; margin-right: 0.5rem;"></i>Risk Management</h3>
+                    <p>Identify and mitigate risks before they impact your business.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 Arsha Consulting. Excellence in Professional Services.</p></footer>
+</body>
+</html>

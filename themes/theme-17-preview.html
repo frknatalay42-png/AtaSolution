@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakezone - Bakery & Pastry Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', serif; background: #fef9f3; }
+        header { background: linear-gradient(90deg, #d4a574, #c89968); color: white; padding: 1.5rem 2rem; }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; }
+        nav { display: flex; gap: 2.5rem; }
+        nav a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #fff5e6; opacity: 0.8; }
+        .hero { background: linear-gradient(135deg, #fde4c8, #f5d5b8); color: #663d1d; padding: 5rem 2rem; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+        .container-main { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
+        .products-title { font-size: 2.5rem; text-align: center; color: #663d1d; margin-bottom: 3rem; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s; border: 1px solid #ffe6cc; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(212, 165, 116, 0.2); }
+        .product-img { background: linear-gradient(135deg, #d4a574, #e6b87d); height: 220px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .product-info { padding: 1.5rem; }
+        .product-name { color: #663d1d; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .product-desc { color: #999; font-size: 0.9rem; margin-bottom: 1rem; }
+        .product-price { color: #d4a574; font-size: 1.3rem; font-weight: 700; }
+        .about-section { background: white; padding: 3rem; border-radius: 12px; margin: 4rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .about-section h2 { color: #663d1d; margin-bottom: 1rem; }
+        footer { background: #663d1d; color: white; padding: 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><i class="fas fa-birthday-cake"></i> Cakezone</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Products</a>
+                <a href="#">Custom Orders</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <div class="hero">
+        <h1>Welcome to Cakezone</h1>
+        <p>Fresh & Delicious Baked Goods Made with Love</p>
+        <button style="padding: 12px 35px; background: #d4a574; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem;">Order Now</button>
+    </div>
+    <div class="container-main">
+        <h2 class="products-title">Our Specialties</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img">🎂</div>
+                <div class="product-info">
+                    <div class="product-name">Chocolate Cake</div>
+                    <div class="product-desc">Rich chocolate layers with cream filling</div>
+                    <div class="product-price">$35.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🧁</div>
+                <div class="product-info">
+                    <div class="product-name">Cupcakes</div>
+                    <div class="product-desc">Assorted flavors with toppings</div>
+                    <div class="product-price">$3.50 each</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🥐</div>
+                <div class="product-info">
+                    <div class="product-name">Croissants</div>
+                    <div class="product-desc">Buttery, flaky pastries</div>
+                    <div class="product-price">$4.50 each</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🍪</div>
+                <div class="product-info">
+                    <div class="product-name">Cookies</div>
+                    <div class="product-desc">Homemade varieties</div>
+                    <div class="product-price">$2.00 each</div>
+                </div>
+            </div>
+        </div>
+        <div class="about-section">
+            <h2>About Cakezone</h2>
+            <p>Since 2015, Cakezone has been serving the community with fresh, homemade baked goods. We use only the finest ingredients and traditional baking methods. Whether it's a special occasion or just a sweet treat, we're here for you.</p>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 Cakezone. Taste the Sweetness.</p></footer>
+</body>
+</html>

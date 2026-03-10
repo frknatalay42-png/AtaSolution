@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinemaFlow - Entertainment Streaming Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; }
+        .sticky-nav { background: #010409; padding: 1rem 2rem; border-bottom: 1px solid #30363d; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .cinema-logo { font-size: 1.3rem; font-weight: 800; color: #ff375f; }
+        .nav-items { display: flex; gap: 2rem; }
+        .nav-items a { color: #8b949e; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-items a:hover { color: #ff375f; }
+        .hero-full { background: linear-gradient(180deg, rgba(255, 55, 95, 0.1) 0%, rgba(13, 17, 23, 0.9) 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23161b22" width="1200" height="600"/><circle cx="150" cy="100" r="80" fill="%23ff375f" opacity="0.1"/><circle cx="1050" cy="500" r="120" fill="%23ff375f" opacity="0.08"/></svg>'); padding: 6rem 2rem; text-align: center; min-height: 500px; display: flex; align-items: center; justify-content: center; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; color: #ff375f; }
+        .hero-content p { font-size: 1.2rem; color: #8b949e; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-content button { padding: 14px 50px; background: #ff375f; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1400px; margin: 4rem auto; padding: 0 2rem; }
+        .content-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .content-card:hover { border-color: #ff375f; box-shadow: 0 0 20px rgba(255, 55, 95, 0.2); transform: translateY(-4px); }
+        .card-image { height: 250px; background: linear-gradient(135deg, #ff375f, #ff6b9d); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: rgba(255, 255, 255, 0.3); }
+        .card-info { padding: 1.5rem; }
+        .card-info h3 { color: #c9d1d9; margin-bottom: 0.5rem; font-weight: 700; font-size: 1rem; }
+        .card-info p { color: #8b949e; font-size: 0.85rem; }
+        .btn-secondary { display: inline-block; margin-top: 1rem; padding: 8px 20px; background: #30363d; color: #ff375f; border: 1px solid #ff375f; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        footer { background: #010409; color: #6e7681; padding: 2.5rem 2rem; text-align: center; border-top: 1px solid #30363d; }
+    </style>
+</head>
+<body>
+    <div class="sticky-nav">
+        <div class="cinema-logo"><i class="fas fa-film"></i> CinemaFlow</div>
+        <div class="nav-items">
+            <a href="#">Discover</a>
+            <a href="#">Movies</a>
+            <a href="#">Series</a>
+            <a href="#">My List</a>
+        </div>
+    </div>
+    <div class="hero-full">
+        <div class="hero-content">
+            <h1>Stream Your Favorites</h1>
+            <p>Unlimited entertainment at your fingertips. Thousands of movies and shows in one place.</p>
+            <button>Start Watching</button>
+        </div>
+    </div>
+    <div class="content-grid">
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-play-circle"></i></div>
+            <div class="card-info">
+                <h3>Epic Films</h3>
+                <p>Blockbusters and action-packed adventure</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-users"></i></div>
+            <div class="card-info">
+                <h3>Drama Series</h3>
+                <p>Award-winning storytelling and drama</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-heart"></i></div>
+            <div class="card-info">
+                <h3>Romantic Tales</h3>
+                <p>Love stories to warm your heart</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-laugh"></i></div>
+            <div class="card-info">
+                <h3>Comedy Central</h3>
+                <p>Hilarious shows and stand-up specials</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-book"></i></div>
+            <div class="card-info">
+                <h3>Documentaries</h3>
+                <p>Real stories from around the world</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+        <div class="content-card">
+            <div class="card-image"><i class="fas fa-robot"></i></div>
+            <div class="card-info">
+                <h3>Sci-Fi Universe</h3>
+                <p>Futuristic adventures and technology</p>
+                <a href="#" class="btn-secondary">Watch Now</a>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 CinemaFlow. Entertainment Without Limits.</p></footer>
+</body>
+</html>

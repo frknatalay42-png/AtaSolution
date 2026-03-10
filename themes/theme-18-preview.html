@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodwagon - Food Delivery & Ordering System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fff5f5; }
+        header { background: #ff6b35; color: white; padding: 1rem 2rem; box-shadow: 0 2px 8px rgba(255,107,53,0.2); }
+        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 700; }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: white; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: #ffe0d0; }
+        .search-header { margin-left: auto; display: flex; gap: 1rem; align-items: center; }
+        .search-header input { padding: 8px 15px; border: none; border-radius: 6px; }
+        .hero { background: linear-gradient(135deg, #ff6b35, #ff8a50); color: white; padding: 4rem 2rem; display: flex; align-items: center; }
+        .hero-content { max-width: 1400px; margin: 0 auto; width: 100%; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.95; margin-bottom: 2rem; }
+        .container-main { max-width: 1400px; margin: 3rem auto; padding: 0 2rem; }
+        .filter-tabs { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid #ffe0d0; }
+        .filter-tabs a { padding: 1rem; color: #999; text-decoration: none; border-bottom: 3px solid transparent; transition: all 0.3s; }
+        .filter-tabs a.active { color: #ff6b35; border-bottom-color: #ff6b35; }
+        .restaurants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .restaurant-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.08); transition: all 0.3s; }
+        .restaurant-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(255,107,53,0.15); }
+        .restaurant-img { background: linear-gradient(135deg, #ff6b35, #ff8a50); height: 180px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; }
+        .restaurant-info { padding: 1.5rem; }
+        .restaurant-name { color: #333; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .restaurant-rating { color: #ff6b35; margin-bottom: 0.5rem; }
+        .restaurant-time { color: #999; font-size: 0.9rem; }
+        footer { background: #333; color: white; padding: 2rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><i class="fas fa-utensils"></i> Foodwagon</div>
+            <nav>
+                <a href="#">Restaurants</a>
+                <a href="#">Deals</a>
+                <a href="#">Tracking</a>
+                <a href="#">Support</a>
+            </nav>
+            <div class="search-header">
+                <input type="text" placeholder="Search restaurants...">
+                <button style="background: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer;"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Food Delivery Made Easy</h1>
+            <p>Order from your favorite restaurants and get it delivered hot & fresh</p>
+        </div>
+    </div>
+    <div class="container-main">
+        <div class="filter-tabs">
+            <a href="#" class="active">All Restaurants</a>
+            <a href="#">Fast Food</a>
+            <a href="#">Pizza</a>
+            <a href="#">Asian</a>
+            <a href="#">Desserts</a>
+        </div>
+        <div class="restaurants-grid">
+            <div class="restaurant-card">
+                <div class="restaurant-img">🍔</div>
+                <div class="restaurant-info">
+                    <div class="restaurant-name">Burger Barn</div>
+                    <div class="restaurant-rating">★★★★★ 4.8</div>
+                    <div class="restaurant-time">⏱️ 20-30 mins</div>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-img">🍕</div>
+                <div class="restaurant-info">
+                    <div class="restaurant-name">Pizza Palace</div>
+                    <div class="restaurant-rating">★★★★☆ 4.5</div>
+                    <div class="restaurant-time">⏱️ 25-35 mins</div>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-img">🍜</div>
+                <div class="restaurant-info">
+                    <div class="restaurant-name">Noodle House</div>
+                    <div class="restaurant-rating">★★★★★ 4.9</div>
+                    <div class="restaurant-time">⏱️ 15-25 mins</div>
+                </div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-img">🍱</div>
+                <div class="restaurant-info">
+                    <div class="restaurant-name">Sushi Master</div>
+                    <div class="restaurant-rating">★★★★★ 4.7</div>
+                    <div class="restaurant-time">⏱️ 30-40 mins</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer><p>&copy; 2024 Foodwagon. Hungry? We Got You.</p></footer>
+</body>
+</html>
